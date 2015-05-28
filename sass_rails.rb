@@ -35,7 +35,7 @@ file "app/assets/stylesheets/blocks.sass", <<-CODE
 CODE
 
 inside("app/assets/stylesheets/blocks") do
-  BASE_CSS_FILES.each { |filename| run "touch .gitkeep"}
+  run "touch .gitkeep" 
 end
 
 inside("app/assets/stylesheets/base") do
