@@ -1,5 +1,5 @@
 gem 'compass-rails'
-gem 'bootstrap-rails'
+gem 'bootstrap-sass'
 
 file "config/initializers/assets.rb", <<-CODE
 # Asset pipeline configuration goes here...
