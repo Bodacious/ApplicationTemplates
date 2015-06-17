@@ -1,4 +1,11 @@
 gem 'compass-rails'
+gem 'bootstrap-rails'
+
+file "config/initializers/assets.rb", <<-CODE
+# Asset pipeline configuration goes here...
+Rails.application.config.assets.js_compressor = :uglifier
+Rails.application.config.assets.css_compressor = :sass
+CODE
 
 puts "Setting up base CSS files"
 
@@ -23,15 +30,15 @@ CODE
 
 # Add a SASS base.sass file
 file"app/assets/stylesheets/base.sass", <<-CODE
-@import "colours"
-@import "typography"
-@import "html"
-@import "responsiveness"
+@import "base/colours"
+@import "base/typography"
+@import "base/html"
+@import "base/responsiveness"
 CODE
 
 file "app/assets/stylesheets/blocks.sass", <<-CODE
 // Your BEM files go in ./blocks and should be loaded here:
-@import "blocks/*"
+
 CODE
 
 inside("app/assets/stylesheets/blocks") do
