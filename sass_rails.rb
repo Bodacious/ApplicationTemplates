@@ -42,9 +42,20 @@ file "app/assets/stylesheets/blocks.sass", <<-CODE
 CODE
 
 inside("app/assets/stylesheets/blocks") do
-  run "touch .gitkeep" 
+  run "touch .gitkeep"
 end
 
 inside("app/assets/stylesheets/base") do
   BASE_CSS_FILES.each { |filename| run "touch _#{filename}.sass"}
 end
+
+environment do
+  text = <<-TEXT
+  config.generators do |g|
+    g.assets = false
+  end
+  TEXT
+end
+
+environment "config.action_controller.include_all_helpers = false"
+environment "config.active_record.schema_format = :sql"

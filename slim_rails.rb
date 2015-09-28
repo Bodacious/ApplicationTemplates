@@ -1,9 +1,8 @@
 puts "Configuring application for Slim rails"
 
 gem "slim-rails"
-gem "html2slim"
 
-file "config/initializers.rb", <<-CODE
+file "config/initializers/slim.rb", <<-CODE
 Slim::Embedded.options[:markdown] = { :smartypants => true }
 
 Slim::Engine.set_options({

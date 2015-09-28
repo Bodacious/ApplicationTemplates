@@ -13,7 +13,7 @@ meta property="og:description"  content== og_description
 - if og_image_url
   meta property="og:image"       content== og_image_url
 
-// Geo Tags  
+// Geo Tags
 meta name="geo.placename"  content="Edinburgh EH10 4DY, UK"
 meta name="geo.position" content="55.936611;-3.209363"
 meta name="geo.region" content="GB-Midlothian"
@@ -25,7 +25,7 @@ meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalabl
 meta content="yes" name="apple-mobile-web-app-capable"
 
 // Author tags
-meta name="author" content== author 
+meta name="author" content== author
 
 = yield(:meta)
 
@@ -37,7 +37,7 @@ end
 
 file "app/helpers/layout_helper.rb", <<-CODE
 module LayoutHelper
-  
+
   def title(content = nil)
     if content
       content_for(:title, content)
@@ -45,20 +45,32 @@ module LayoutHelper
       content_for(:title)
     end
   end
-  
+
+  DEFAULT_DESCRIPTION = ""
 
   def description(content = nil)
-    raise "Description content too long" if content.to_s.length > 160 
+    raise "Description content too long" if content.to_s.length > 160
     if content
       content_for(:description, content)
     else
       content_for(:description) || DEFAULT_DESCRIPTION
     end
   end
-    
+
   def copyright_statement
     "&copy; \#{(Date.today.year..2015).to_a.join(" &dash; ")} Katana Code Ltd".html_safe
   end
- 
+
+end
+CODE
+
+file "app/helpers/icons_helper.rb", <<-CODE
+module IconsHelper
+
+  def fa(icon_name, options ={})
+    options[:class] = Array(options[:class]) + [ 'fa', "fa-\#\{icon_name.to_s.dasherize\}" ]
+    content_tag(:i, nil, options)
+  end
+
 end
 CODE
