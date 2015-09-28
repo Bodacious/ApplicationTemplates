@@ -5,7 +5,7 @@ gem 'rails_12factor'
 gem 'puma'
 
 file "Procfile", <<-CODE
-web: bundle exec puma -C config/puma.rb%
+web: bundle exec puma -C config/puma.rb
 CODE
 
 file "config/puma.rb", <<-CODE
