@@ -33,7 +33,7 @@ on_worker_boot do
 end
 CODE
 
-run "bundle install"
+run "bundle"
 
 # Create a new Heroku app with the application name
 puts <<-OUTPUT
